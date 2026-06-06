@@ -10,17 +10,17 @@ app.use(express.json());
 
 const PRIVATE_APP_ACCESS = process.env.PRIVATE_APP_ACCESS;
 
-const CUSTOM_OBJECT_TYPE = '2-203762586';
+const CAR_OBJECT = '2-203762586';
 
-// Route 1: Homepage - fetches and displays all custom object records
+// Route 1: Homepage - fetches and displays all car object records
 app.get('/', async (req, res) => {
-    const customObjects = `https://api.hubapi.com/crm/v3/objects/${CUSTOM_OBJECT_TYPE}?properties=name,registrationnumber,yom`;
+    const cars = `https://api.hubapi.com/crm/v3/objects/${CAR_OBJECT}?properties=name,registrationnumber,yom`;
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
     };
     try {
-        const resp = await axios.get(customObjects, { headers });
+        const resp = await axios.get(cars, { headers });
         const data = resp.data.results;
         res.render('homepage', { title: 'Home | HubSpot APIs', data });
     } catch (error) {
@@ -28,14 +28,14 @@ app.get('/', async (req, res) => {
     }
 });
 
-// Route 2: Render the form to add a new custom object record
+// Route 2: Render the form to add a new car record
 app.get('/update-cobj', (req, res) => {
     res.render('updates', {
-        title: 'Update Custom Object Form | Integrating With HubSpot I Practicum'
+        title: 'Update Car Form | Integrating With HubSpot I Practicum'
     });
 });
 
-// Route 3: Handle form submission - creates a new custom object record and redirects to homepage
+// Route 3: Handle form submission - creates a new car record and redirects to homepage
 app.post('/update-cobj', async (req, res) => {
     const update = {
         properties: {
@@ -45,14 +45,14 @@ app.post('/update-cobj', async (req, res) => {
         }
     };
 
-    const createCustomObject = `https://api.hubapi.com/crm/v3/objects/${CUSTOM_OBJECT_TYPE}`;
+    const createCar = `https://api.hubapi.com/crm/v3/objects/${CAR_OBJECT}`;
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
     };
 
     try {
-        await axios.post(createCustomObject, update, { headers });
+        await axios.post(createCar, update, { headers });
         res.redirect('/');
     } catch (error) {
         console.error(error);
