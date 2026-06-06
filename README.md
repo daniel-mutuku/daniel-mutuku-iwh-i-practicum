@@ -1,28 +1,64 @@
-# Welcome to the Integrating With HubSpot I: Foundations Practicum
+# Integrating With HubSpot I: Foundations Practicum
 
-This repository is for the Integrating With HubSpot I: Foundations course. This practicum is one of two requirements for receiving your Integrating With HubSpot I: Foundations certification. You must also take the exam and receive a passing grade (at least 75%).
+A Node.js application that integrates with the HubSpot CRM API to manage a custom object (Cars). Built as part of the HubSpot Academy Integrating With HubSpot I: Foundations certification.
 
-To read the full directions, please go to the [practicum instructions](https://app.hubspot.com/academy/l/tracks/1092124/1093824/5493?language=en).
+**Custom object list view:** https://app-eu1.hubspot.com/contacts/148639814/objects/2-203762586/views/all/list
 
-**Put your HubSpot developer test account custom objects URL link here:** https://app-eu1.hubspot.com/contacts/148639814/objects/2-203762586/views/all/list
+---
 
-___
-## Tips:
-- Commit to your repository often. Even if you make small tweaks to your code, it’s best to be committing to your repository frequently.
-- The subject of the custom object is up to you. Feel free to get creative!
-- Please create a test account and include your private app access token in your repo.
-- Ensure you re-merge any working branches into the main branch.
-- DO NOT ADD YOUR PRIVATE APP TOKEN TO YOUR REPOSITORY. 
+## Prerequisites
 
-## Pre-requisites:
-- Using [Node](https://nodejs.org/en/download) and node packages
-- Using [Express](https://expressjs.com/en/starter/installing.html)
-- Using [Axios](https://axios-http.com/docs/intro)
-- Using [Pug templating system](https://pugjs.org/api/getting-started.html)
-- Using the command line
-- Using [Git and GitHub](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
+- [Node.js](https://nodejs.org/en/download) v14 or higher
+- A HubSpot developer test account with a private app that has the following scopes:
+  - `crm.schemas.custom` (read & write)
+  - `crm.objects.custom` (read & write)
+  - `crm.objects.contacts` (read & write)
 
-## Requirements
-- All work must be your own. During the grading process we will check the revision history. Submissions that do not meet this requirement will not be considered.
-- You must have at least two new routes in your index.js file and one new pug template for the homepage.
-- You must create a developer test account and link to it in your README.md file. Submissions that do not meet this requirement will not be considered.
+---
+
+## Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/daniel-mutuku/daniel-mutuku-iwh-i-practicum
+   cd daniel-mutuku-iwh-i-practicum
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure your environment**
+
+   Create a `.env` file in the root of the project:
+   ```bash
+   touch .env
+   ```
+
+   Add your HubSpot private app access token to the file:
+   ```
+   PRIVATE_APP_ACCESS=your-private-app-access-token-here
+   ```
+
+   > **Never commit your `.env` file.** It is listed in `.gitignore`.
+
+---
+
+## Running the app
+
+```bash
+node index.js
+```
+
+Open your browser and go to **http://localhost:3000**
+
+---
+
+## Routes
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/` | Homepage — lists all car records in a table |
+| GET | `/update-cobj` | Renders the form to add a new car record |
+| POST | `/update-cobj` | Submits the form and creates the record in HubSpot |

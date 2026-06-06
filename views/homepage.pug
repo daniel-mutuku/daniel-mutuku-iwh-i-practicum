@@ -5,17 +5,20 @@ html
         meta(name="viewport" content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/css/style.css")
     body
-        h1 Vehicles
-        a(href="/update-cobj") Add to this table
-        table
-            thead
-                tr
-                    th Name
-                    th Registration Number
-                    th Year of Manufacture
-            tbody
-                each obj in data
-                    tr
-                        td #{obj.properties.name}
-                        td #{obj.properties.registrationnumber}
-                        td #{obj.properties.yom}
+        .page-wrapper
+            .page-header
+                h1 Cars
+                a.btn.btn-primary(href="/update-cobj") Add to this table
+            .table-card
+                table
+                    thead
+                        tr
+                            th Name
+                            th Registration Number
+                            th Year of Manufacture
+                    tbody
+                        each obj in data
+                            tr
+                                td #{obj.properties.name}
+                                td #{obj.properties.registrationnumber}
+                                td #{obj.properties.yom}

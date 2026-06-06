@@ -5,13 +5,20 @@ html
         meta(name="viewport" content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/css/style.css")
     body
-        h1 Add / Update a Vehicle
-        form(method="POST" action="/update-cobj")
-            label(for="name") Name
-            input(type="text" name="name" id="name" required)
-            label(for="registrationnumber") Registration Number
-            input(type="text" name="registrationnumber" id="registrationnumber" required)
-            label(for="yom") Year of Manufacture
-            input(type="text" name="yom" id="yom" required)
-            button(type="submit") Save
-        a(href="/") Return to the homepage
+        .page-wrapper
+            .form-card
+                h1 Add a Car
+                p.subtitle Fill in the details below to add a new record.
+                form(method="POST" action="/update-cobj")
+                    .form-group
+                        label(for="name") Name
+                        input(type="text" name="name" id="name" placeholder="e.g. Toyota Corolla GR Sport" required)
+                    .form-group
+                        label(for="registrationnumber") Registration Number
+                        input(type="text" name="registrationnumber" id="registrationnumber" placeholder="e.g. KCA 123A" required)
+                    .form-group
+                        label(for="yom") Year of Manufacture
+                        input(type="text" name="yom" id="yom" placeholder="e.g. 2019" required)
+                    .form-footer
+                        button.btn.btn-primary(type="submit") Save Record
+                        a.btn.btn-secondary(href="/") Return to the homepage
