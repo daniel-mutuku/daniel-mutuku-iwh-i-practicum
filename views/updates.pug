@@ -7,12 +7,12 @@ html
     body
         .page-wrapper
             .form-card
-                h1 Add a Vehicle
+                h1 Add a Car
                 p.subtitle Fill in the details below to add a new record.
                 form(method="POST" action="/update-cobj")
                     .form-group
                         label(for="name") Name
-                        input(type="text" name="name" id="name" placeholder="e.g. Toyota Corolla" required)
+                        input(type="text" name="name" id="name" placeholder="e.g. Toyota Corolla GR Sport" required)
                     .form-group
                         label(for="registrationnumber") Registration Number
                         input(type="text" name="registrationnumber" id="registrationnumber" placeholder="e.g. KCA 123A" required)
